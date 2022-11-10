@@ -96,7 +96,7 @@ class SubjectUpdateView(APIView):
 class QuestionView(APIView):
 
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsUserOrAdmin]
+    permission_classes = [IsAdminOnly]
 
     def get(self, request, format=None):
         """this endpoint gets all the questions in the database"""
@@ -154,7 +154,7 @@ class QuestionSubjectView(APIView):
 class QuestionSubjectUpdateView(APIView):
 
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsUserOrAdmin]
+    permission_classes = [IsAdminOnly]
 
     def get_question(self, question_id):
         try:

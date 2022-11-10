@@ -3,7 +3,7 @@ from Capstone.settings import base
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['Capstone-quiz.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['capstone-quiz.herokuapp.com', '127.0.0.1']
 
 DATABASES = {
     'default': {

@@ -2,7 +2,7 @@ from django.db import models
 from Capstone_users.models import CustomUser
 
 class Subject(models.Model):
-    subject_name = models.CharField(max_length=200)
+    subject_name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.subject_name

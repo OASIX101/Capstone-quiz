@@ -221,7 +221,7 @@ class GroupQuizQuestionView(APIView):
         rand_str3 = [random.choice(string.ascii_letters) for _ in range(2)]
         code3 = "".join(rand_str3)
         today = datetime.now()
-        return today.strftime(f"{code2}%d-%m{code3}-{code}%y")
+        return today.strftime(f"{code2}%d%m{code3}{code}%y")
 
     def get_subject(self, subject_id):
         try:
@@ -255,7 +255,8 @@ class GroupQuizQuestionView(APIView):
 
                     data = {
                         'message': 'success',
-                        'quiz_code': serializer.data['quiz_code']
+                        'quiz_code': serializer.data['quiz_code'],
+                        'created_by': request.user.username, 
                     }
 
                     return Response(data, status=status.HTTP_200_OK)
@@ -423,7 +424,7 @@ class QuizAnswerView(APIView):
                     if serializer2.is_valid():
                         serializer2.save()
                         data = {
-                            'user': request.user.id, 
+                            'user': request.user.username, 
                             'quiz_code': quiz_code,
                             'score': score,
                             'correction(s)': correct_answers,
@@ -495,7 +496,8 @@ class UserQuestionView(APIView):
 
                     data = {
                         'message': 'success',
-                        'questions': serializer.data
+                        'questions': serializer.data,
+                        'subject': Subject.objects.get(id=serializer.data['subject']).subject_name,
                     }
 
                     return Response(data, status=status.HTTP_200_OK)
@@ -581,8 +583,8 @@ class UserAnswerQuestionView(APIView):
                     correct_answers['answer_for_question10'] = eval(quiz.question10)['answer']  
 
                 data = {
-                    'user': request.user.id, 
-                    'subject': quiz.subject.id,
+                    'user': request.user.username, 
+                    'subject': quiz.subject.subject_name,
                     'score': score,
                     'correction(s)': correct_answers,
                     'date_taken': datetime.now()

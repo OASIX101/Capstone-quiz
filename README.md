@@ -6,9 +6,12 @@ Super user credentials = {
 }
 
 
-                                                        ---EXPLANATION---
+ ---EXPLANATION---
 
     I created a quiz api that registers users and allows users to change their password only when they are logged in(I didnt add an endpoint that allows users to change their password when they are not logged in because i didnt implement user email verification for a reason which is that you are able create a new user and test the api without going through that verification step). The api also allows users to get questions related to the subject provided which the condition that the subject exists in the database. It allows users to generate 10 random questions for private group quiz (like Kahoot.io that was used on the graduation day) which the quiz questions can be accessed by a unique quiz code generated for each group quiz created and allow users to only be able to answer the quiz once. Its allow give room for users to be able to practice questions which are 10 randomly generated questions. The frontend development is supposed to ask the user a how many questions they would like to answer with some limitations on how many they must not exceed and get random questions without repetitions of questions but i made those endpoints cos i didnt know you wanted me to do the quis api.
+    
+    
+    
 
                                                         ---ENDPOINTS---
 -question/ : allows only admin users to get all the questions and create new questions.

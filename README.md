@@ -1,9 +1,8 @@
 # Capstone-quiz
 
-Super user credentials = {
-    'username': 'oasix',
-    'password': 'oreoluwa'
-}
+Super user credentials :
+  username = oasix
+  password = oreoluwa
 
 
  ---EXPLANATION---
